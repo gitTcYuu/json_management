@@ -41,13 +41,16 @@ class _SharePlusPageState extends State<SharePlusPage> {
 }
 
 Widget _gridView({required List<Photo> photos}) {
-  return ListView.separated(
-    separatorBuilder: (context, index) => const SizedBox(height: 10),
+  return GridView.builder(
+    gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+      maxCrossAxisExtent: 300,
+      childAspectRatio: 3 / 2,
+      crossAxisSpacing: 20,
+      mainAxisSpacing: 20,
+    ),
     itemCount: photos.length,
     itemBuilder: (context, index) {
       return Container(
-        height: 150,
-        width: 150,
         decoration: BoxDecoration(
             image: DecorationImage(
                 image: NetworkImage(photos[index].thumbnailUrl))),
